@@ -11,7 +11,7 @@ namespace AboutMe
 
             int counter = 0;
             //Have an array of answers that holds true or false. Increment counter if true, meaning that the user got the question right.
-            bool[] quizlet = new bool[] { FavoriteActivity(), FavoriteConsole(), FavoriteAnimal() };
+            bool[] quizlet = new bool[] { FavoriteActivity(), FavoriteConsole(), FavoriteGame(), FavoriteAnimal(), MyBackground() };
             for (int i = 0; i < quizlet.Length;i++)
             {
                 if (quizlet[i])
@@ -24,10 +24,13 @@ namespace AboutMe
 
         }
 
+        //The following 5 question methods follow the same concept.
         static bool FavoriteActivity()
         {
             Console.WriteLine("So let's get started! Which activity do you think I gravitate towards, Music or Sports?");
             string input = Console.ReadLine();
+            //Capture user input and normalize it by using ToLower so input is case insensitive.
+            //Switch case used for a simple response. Will return either true or false depending on user input.
             switch (input.ToLower())
             {
                 case "music":
@@ -77,7 +80,7 @@ namespace AboutMe
                     return false;
             }
         }
-        static bool FavoriteGame(int answer)
+        static bool FavoriteGame()
         {
             Console.WriteLine("Follow up question! What game genre is my favorite? Fighting, RPG, roguelikes, etc..");
             string input = Console.ReadLine();
@@ -95,13 +98,25 @@ namespace AboutMe
             }
         }
 
-        static string MyBackground(int answer)
+        static bool MyBackground()
         {
-            return "something";
+            Console.WriteLine("By now you're probably getting a little frustrated. This is the last question, I swear!");
+            Console.WriteLine("Prior to transitioning to tech, I had a background in......?");
+            string input = Console.ReadLine();
+            switch (input.ToLower())
+            {
+                case "design":
+                    Console.WriteLine("Oh wow, I'm surprised you actually got that right. Bravo! ");
+                    return true;
+                default:
+                    Console.WriteLine("Good try, good try. I studied UI/UX design in college and worked as a graphic designer for a brief period of time.");
+                    return false;
+            }
         }
 
         static int Tally(int score)
         {
+            //Increment argument and return.
             score++;
             return score;
         }
